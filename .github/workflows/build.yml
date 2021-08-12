@@ -20,7 +20,8 @@ jobs:
         dotnet-version: 5.0.100
             
     - name: Build
-      run: dotnet build -c Release
+      # This uses msbuild, see https://github.com/dotnet/msbuild/issues/4704
+      run: msbuild /property:Configuration=Release
 
     - uses: actions/upload-artifact@v2
       with:
