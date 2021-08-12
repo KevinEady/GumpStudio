@@ -14,19 +14,13 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    # - name: Setup .NET 5
-    #   uses: actions/setup-dotnet@v1
-    #   with:
-    #     dotnet-version: 5.0.100
-
     - name: Add msbuild to PATH
       uses: microsoft/setup-msbuild@v1.0.2
 
     - name: Restore & Build
-      # This uses msbuild, see https://github.com/dotnet/msbuild/issues/4704
-      run: msbuild /t:restore && msbuild /property:Configuration=Release
+      run: msbuild /t:restore && msbuild /p:Configuration=Release
 
     - uses: actions/upload-artifact@v2
       with:
         name: GumpStudio
-        path: Build/
+        path: Build
