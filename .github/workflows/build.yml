@@ -22,9 +22,9 @@ jobs:
     - name: Add msbuild to PATH
       uses: microsoft/setup-msbuild@v1.0.2
 
-    - name: Build
+    - name: Restore & Build
       # This uses msbuild, see https://github.com/dotnet/msbuild/issues/4704
-      run: msbuild /property:Configuration=Release
+      run: msbuild /t:restore && msbuild /property:Configuration=Release
 
     - uses: actions/upload-artifact@v2
       with:
